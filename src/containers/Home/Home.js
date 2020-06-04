@@ -1,11 +1,28 @@
 import React, { Component } from 'react';
 import './Home.css';
+import Recipes from './Recipes/Recipes';
+import NewRecipe from './NewRecipe/NewRecipe';
+import { Route, NavLink, Switch, Redirect } from 'react-router-dom'; 
 
 class Home extends Component {
     render () {
         return (
-            <div>
-                {/*pocetna strana sa navigacijom i ostalim sadrzajem*/}
+            <div className="Home">
+            {/*pocetna strana sa navigacijom i ostalim sadrzajem*/}
+                <header>
+                    <nav>
+                        <ul>
+                            <li><NavLink to="/recipes/" >Recipes</NavLink></li>
+                            <li><NavLink to="/new-recipe">New Recipe</NavLink></li>
+                        </ul>
+                    </nav>
+                </header>
+                <Switch>
+                    <Redirect from="/react-recipe" to="/recipes/" />
+                    <Route path="/recipes" component={Recipes} />
+                    <Route path="/new-recipe" component={NewRecipe} />
+                    <Route render={() => <h1>Not found</h1>} />
+                </Switch> 
             </div>
         );
     }

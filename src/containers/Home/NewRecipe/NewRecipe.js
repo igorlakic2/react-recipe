@@ -5,6 +5,7 @@ class NewRecipe extends Component {
         return (
             <div>
                 {/* dodavanje novog recepta */}
+                <h1>Add Recipe</h1>
             </div>
         );
     }
