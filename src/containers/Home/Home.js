@@ -17,12 +17,12 @@ class Home extends Component {
                         </ul>
                     </nav>
                 </header>
-                <Switch>
+                {/* <Switch>
                     <Redirect from="/react-recipe" to="/recipes/" />
                     <Route path="/recipes" component={Recipes} />
                     <Route path="/new-recipe" component={NewRecipe} />
                     <Route render={() => <h1>Not found</h1>} />
-                </Switch> 
+                </Switch>  */}
             </div>
         );
     }
