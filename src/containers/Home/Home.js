@@ -18,7 +18,7 @@ class Home extends Component {
                     </nav>
                 </header>
                 <Switch>
-                    <Redirect from="/react-recipe" to="/recipes/" />
+                    {/* <Redirect from="/react-recipe" to="/recipes/" /> */}
                     <Route path="/recipes" component={Recipes} />
                     <Route path="/new-recipe" component={NewRecipe} />
                     <Route render={() => <h1>Not found</h1>} />
