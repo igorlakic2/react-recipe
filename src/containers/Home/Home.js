@@ -19,7 +19,6 @@ class Home extends Component {
                 </header>
 
                 <Redirect from="/" to="/recipes" />
-
                 <Switch>
                     <Route path="/recipes" component={Recipes} />
                     <Route path="/new-recipe" component={NewRecipe} />
