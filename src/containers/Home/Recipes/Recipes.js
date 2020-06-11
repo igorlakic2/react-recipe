@@ -1,7 +1,23 @@
 import React, { Component } from 'react';
 import './Recipes.css';
+import axios from 'axios'
+//import axios from '../../../axios';
 
 class Recipes extends Component {
+
+    componentDidMount () {
+        console.log(this.props);
+        axios.get('/posts')
+            .then(response => {
+                console.log(response.data);
+            })
+            .catch(error => {
+                console.log(error);
+                alert(error);
+                //this.setState({error: true});
+            });
+    }
+
     render () {
         return (
             <div>

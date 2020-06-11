@@ -1,20 +1,41 @@
 import React, { Component } from 'react';
 import './NewRecipe.css';
+import axios from 'axios';
 
 class NewRecipe extends Component {
+    state = {
+        title: '',
+        ingredients: '',
+        instructions: ''
+    }
+
+    postRecipeHandler = () => {
+        const data = {
+            title: this.state.title,
+            ingredients: this.state.ingredients,
+            instructions: this.state.instructions
+        };
+        
+        axios.post('/posts', data)
+            .then(response => {
+                console.log(response);
+                this.props.history.replace('/recipes');
+            });
+    }
+
     render () {
         return (
             <div>
                 <div className="NewRecipe">
                     <h1>Add Recipe</h1>
                     <label>Title</label>
-                    <input type="text" />
+                    <input type="text" onChange={(event) => this.setState({title: event.target.value})} />
                     <label>Ingredients</label>
-                    <input type="text" name="ingredients" />
+                    <input type="text" name="ingredients" onChange={(event) => this.setState({ingredients: event.target.value})} />
                     <label>Instructions</label>
-                    <textarea rows="4" />
+                    <textarea rows="4" onChange={(event) => this.setState({instructions: event.target.value})} />
 
-                    <button onClick>Add Recipe</button>
+                    <button onClick={this.postRecipeHandler}>Add Recipe</button> 
                 </div>
             </div>
         );
