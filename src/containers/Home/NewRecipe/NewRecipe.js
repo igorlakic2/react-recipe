@@ -16,11 +16,17 @@ class NewRecipe extends Component {
             instructions: this.state.instructions
         };
         
-        axios.post('/posts', data)
-            .then(response => {
-                console.log(response);
-                this.props.history.replace('/recipes');
-            });
+        // axios.post('http://jsonplaceholder.typicode.com/posts', data)
+        //     .then(response => {
+        //         console.log(response.data);
+        //         this.props.history.replace('/recipes');
+        //     });
+
+        axios.post('https://recipe-project-6.firebaseio.com/podaci.json', data)
+        .then(response => {
+            // console.log(response);
+            this.props.history.replace('/recipes');
+        });
     }
 
     render () {

@@ -1,0 +1,8 @@
+.Recipe {
+    width: 300px;
+    height: 150px;
+    text-align: center;
+    padding: 10px 0;
+    margin: 30px;
+    border: 1px solid grey;
+}
