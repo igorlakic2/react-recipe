@@ -4,9 +4,9 @@ import './Recipe.css';
 const recipe = (props) => {
     return(
         <article className="Recipe">
-            <h3>Naslov: {props.prvi}</h3>
-            <p>Sastojci: {props.drugi}</p>
-            <p>Instrukcije: {props.treci}</p>
+            <h3>Naslov: {props.title}</h3>
+            <p>Sastojci: {props.ingredients}</p>
+            <p>Instrukcije: {props.instructions}</p>
         </article>
     );
 }
