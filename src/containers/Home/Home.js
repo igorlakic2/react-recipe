@@ -8,7 +8,6 @@ class Home extends Component {
     render () {
         return (
             <div className="Home">
-                {/*pocetna strana sa navigacijom i ostalim sadrzajem*/}
                 <header>
                     <nav>
                         <ul>

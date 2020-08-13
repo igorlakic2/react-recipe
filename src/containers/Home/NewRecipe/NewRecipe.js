@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './NewRecipe.css';
 import axios from 'axios';
+import { Helmet } from 'react-helmet';
+
+const TITLE = "New recipe";
 
 class NewRecipe extends Component {
     state = {
@@ -15,22 +18,18 @@ class NewRecipe extends Component {
             ingredients: this.state.ingredients,
             instructions: this.state.instructions
         };
-        
-        // axios.post('http://jsonplaceholder.typicode.com/posts', data)
-        //     .then(response => {
-        //         console.log(response.data);
-        //         this.props.history.replace('/recipes');
-        //     });
 
         axios.post('https://recipe-project-6.firebaseio.com/podaci.json', data)
         .then(response => {
-            // console.log(response);
             this.props.history.replace('/recipes');
         });
     }
 
     render () {
         return (
+            <Helmet>
+                <title>{TITLE}</title>
+            </Helmet>
             <div>
                 <div className="NewRecipe">
                     <h1>Add Recipe</h1>

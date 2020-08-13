@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import './Recipes.css';
 import axios from 'axios'
-//import axios from '../../../axios';
 import Recipe from '../../../components/Recipe/Recipe';
+import { Helmet } from 'react-helmet';
+
+const TITLE = "Recipes";
 
 class Recipes extends Component {
     state = {
@@ -18,20 +20,19 @@ class Recipes extends Component {
                 let ob = {};
 
                 for(let i=0; i<Object.keys(response.data).length; i++){
-                    let naslov = response.data[Object.keys(response.data)[i]].title;
-                    let sastojci = response.data[Object.keys(response.data)[i]].ingredients;
-                    let instrukcije = response.data[Object.keys(response.data)[i]].instructions;
-                    let kljuc = i;
+                    let title = response.data[Object.keys(response.data)[i]].title;
+                    let ingredients = response.data[Object.keys(response.data)[i]].ingredients;
+                    let instructions = response.data[Object.keys(response.data)[i]].instructions;
+                    let key = i;
 
                     ob = {
-                        naslov: naslov,
-                        sastojci: sastojci,
-                        instrukcije: instrukcije,
-                        kljuc: kljuc
+                        title: title,
+                        ingredients: ingredients,
+                        instructions: instructions,
+                        key: key
                     }
                     niz.push(ob);
                 }
-                // console.log(response.data);
 
                 this.setState({
                     recipes: niz
@@ -45,11 +46,14 @@ class Recipes extends Component {
 
         let recipes = this.state.recipes.map(recipe => {
             return (        
-                <Recipe key={recipe.kljuc} title={recipe.naslov} ingredients={recipe.sastojci} instructions={recipe.instrukcije} />
+                <Recipe key={recipe.key} title={recipe.title} ingredients={recipe.ingredients} instructions={recipe.instructions} />
             )
         });
 
         return (
+            <Helmet>
+                <title>{TITLE}</title>
+            </Helmet>
             <div>
                 {/* strana sa dodatim receptima */}
                 <div className="header">
