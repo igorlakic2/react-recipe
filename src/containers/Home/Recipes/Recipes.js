@@ -12,7 +12,6 @@ class Recipes extends Component {
     }
 
     componentDidMount () {
-        console.log(this.props);
 
             axios.get('https://recipe-project-6.firebaseio.com/podaci.json')
             .then(response => {
@@ -41,21 +40,25 @@ class Recipes extends Component {
             });
     }
 
-    render () {
-        console.log(this.state.recipes.length);
 
+    render () {
         let recipes = this.state.recipes.map(recipe => {
             return (        
-                <Recipe key={recipe.key} title={recipe.title} ingredients={recipe.ingredients} instructions={recipe.instructions} />
+                <Recipe 
+                    key={recipe.key} 
+                    title={recipe.title} 
+                    ingredients={recipe.ingredients} 
+                    instructions={recipe.instructions} 
+                    clicked={() => { console.log(recipe.key + 1); }}
+                />
             )
         });
 
         return (
-            <Helmet>
-                <title>{TITLE}</title>
-            </Helmet>
             <div>
-                {/* strana sa dodatim receptima */}
+                <Helmet>
+                    <title>{TITLE}</title>
+                </Helmet>
                 <div className="header">
                     <input type="text" placeholder="Search..." />
                     <h1>Recipes</h1>

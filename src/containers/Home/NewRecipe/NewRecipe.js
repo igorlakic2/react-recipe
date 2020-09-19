@@ -27,10 +27,11 @@ class NewRecipe extends Component {
 
     render () {
         return (
-            <Helmet>
-                <title>{TITLE}</title>
-            </Helmet>
             <div>
+                <Helmet>
+                    <title>{TITLE}</title>
+                </Helmet>
+                
                 <div className="NewRecipe">
                     <h1>Add Recipe</h1>
                     <label>Title</label>

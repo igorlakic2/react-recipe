@@ -23,13 +23,6 @@ class Home extends Component {
                     <Route path="/new-recipe" component={NewRecipe} />
                     <Route render={() => <h1>Not found</h1>} />
                 </Switch>
-                {/* <Switch>
-                    <Redirect from="/react-recipe" to="/recipes/" />
-                    <Redirect from="/" to="/recipes/" />
-                    <Route path="/recipes" component={Recipes} />
-                    <Route path="/new-recipe" component={NewRecipe} />
-                    <Route render={() => <h1>Not found</h1>} />
-                </Switch>  */}
             </div>
         );
     }

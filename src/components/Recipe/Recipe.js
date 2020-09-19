@@ -3,7 +3,7 @@ import './Recipe.css';
 
 const recipe = (props) => {
     return(
-        <article className="Recipe">
+        <article className="Recipe" onClick={props.clicked}>
             <h3>Naslov: {props.title}</h3>
             <p>Sastojci: {props.ingredients}</p>
             <p>Instrukcije: {props.instructions}</p>

@@ -5,4 +5,6 @@
     padding: 10px 0;
     margin: 10px 15px;
     border: 1px solid grey;
+    user-select: none;
+    cursor: pointer;
 }
