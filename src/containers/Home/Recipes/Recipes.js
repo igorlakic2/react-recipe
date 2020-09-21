@@ -40,6 +40,10 @@ class Recipes extends Component {
             });
     }
 
+    recipeClicked = () => {
+        console.log(recipe.key + 1);
+    }
+
 
     render () {
         let recipes = this.state.recipes.map(recipe => {
@@ -49,7 +53,7 @@ class Recipes extends Component {
                     title={recipe.title} 
                     ingredients={recipe.ingredients} 
                     instructions={recipe.instructions} 
-                    clicked={() => { console.log(recipe.key + 1); }}
+                    clicked={recipeClicked}
                 />
             )
         });

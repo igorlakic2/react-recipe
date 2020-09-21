@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import ModalBackground from '../../../components/ModalBackground/ModalBackground';
 
 class FullRecipe extends Component {
     render () {
         return (
             <div>
-                {/* prikaz celog recepta posle klika */}
+                <ModalBackground clicked={this.props.closed} />
             </div>
         );
     }
