@@ -3,16 +3,18 @@ import './Recipes.css';
 import axios from 'axios'
 import Recipe from '../../../components/Recipe/Recipe';
 import { Helmet } from 'react-helmet';
+import FullRecipe from '../FullRecipe/FullRecipe';
 
 const TITLE = "Recipes";
 
 class Recipes extends Component {
     state = {
-        recipes: []
+        recipes: [],
+        modalActive: false,
+        onClickRecipe: {}
     }
 
     componentDidMount () {
-
             axios.get('https://recipe-project-6.firebaseio.com/podaci.json')
             .then(response => {
                 let niz = [];
@@ -40,10 +42,21 @@ class Recipes extends Component {
             });
     }
 
-    recipeClicked = () => {
-        console.log(recipe.key + 1);
+    recipeClicked = (asd) => {
+        this.setState({
+                modalActive: true, 
+                onClickRecipe: {
+                    title: asd.title,
+                    ingredients: asd.ingredients,
+                    instructions: asd.instructions,
+                    key: asd.key
+                }
+        });
     }
 
+    closeModal = () => {
+        this.setState({modalActive: false});
+    }
 
     render () {
         let recipes = this.state.recipes.map(recipe => {
@@ -53,16 +66,26 @@ class Recipes extends Component {
                     title={recipe.title} 
                     ingredients={recipe.ingredients} 
                     instructions={recipe.instructions} 
-                    clicked={recipeClicked}
+                    clicked={ () => this.recipeClicked(recipe)}
                 />
             )
         });
 
+        let full = null;
+        if(this.state.modalActive){
+            full =  <FullRecipe closed={this.closeModal}>
+                        <h1>Title: {this.state.onClickRecipe.title}</h1>
+                        <h1>Ingredients: {this.state.onClickRecipe.ingredients}</h1>
+                        <h1>Instructions: {this.state.onClickRecipe.instructions}</h1>
+                    </FullRecipe>
+        }else{
+            full = null;
+        }
         return (
             <div>
-                <Helmet>
-                    <title>{TITLE}</title>
-                </Helmet>
+                {/* <Helmet>
+                    <title>{TITLE}</title>    
+                </Helmet> */}
                 <div className="header">
                     <input type="text" placeholder="Search..." />
                     <h1>Recipes</h1>
@@ -71,6 +94,7 @@ class Recipes extends Component {
                 <div className="prikaz">
                     {recipes}
                 </div>      
+                {full}
             </div>
         )
 
