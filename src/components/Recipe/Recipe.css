@@ -1,5 +1,5 @@
 .Recipe {
-    width: 300px;
+    flex: 30%;
     height: 150px;
     text-align: center;
     padding: 10px 0;

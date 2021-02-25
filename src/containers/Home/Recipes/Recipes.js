@@ -83,13 +83,14 @@ class Recipes extends Component {
         }
         return (
             <div>
-                {/* <Helmet>
+                <Helmet>
                     <title>{TITLE}</title>    
-                </Helmet> */}
+                </Helmet>
+                
                 <div className="header">
                     <input type="text" placeholder="Search..." />
-                    <h1>Recipes</h1>
-                    <p>dasdasdasd asdasd asdncvjsoasdkc kae mfkosdmafka mfkwerm vkaersdfkgmasd; fklmad</p>
+                    <h1 style={{color: 'white'}}>Recipes</h1>
+                    <p style={{color: 'white', width: '70%', margin: 'auto', fontSize: '20px'}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla volutpat sem sit amet magna tempus, ac ultricies risus tristique.</p>
                 </div>
                 <div className="prikaz">
                     {recipes}
